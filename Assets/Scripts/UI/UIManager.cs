@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using System.Linq;
 using TMPro;
-using System;
-using UnityEngine.Networking;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,15 +11,6 @@ public class UIManager : MonoBehaviour
     private Button Menu_Button;
     [SerializeField]
     private GameObject Menu_Object;
-    [SerializeField]
-    private RectTransform Menu_RT;
-
-    //[SerializeField]
-    //private Button About_Button;
-    //[SerializeField]
-    //private GameObject About_Object;
-    //[SerializeField]
-    //private RectTransform About_RT;
 
     [Header("Settings UI")]
     [SerializeField]
@@ -199,11 +185,6 @@ public class UIManager : MonoBehaviour
 
     internal int FreeSpins;
 
-    private void Awake()
-    {
-        SimulateClickByDefault();
-    }
-
     private void Start()
     {
 
@@ -253,7 +234,7 @@ public class UIManager : MonoBehaviour
         if (YesQuit_Button) YesQuit_Button.onClick.AddListener(CallOnExitFunction);
 
         if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.RemoveAllListeners();
-        if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); socketManager.ReactNativeCallOnFailedToConnect(); }); //BackendChanges
+        if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); }); //BackendChanges
 
         if (FreeSpin_Button) FreeSpin_Button.onClick.RemoveAllListeners();
         if (FreeSpin_Button) FreeSpin_Button.onClick.AddListener(delegate { StartFreeSpins(FreeSpins); });
@@ -277,15 +258,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    //HACK: Something To Do Here
-    private void SimulateClickByDefault()
-    {
-
-        Debug.Log("Awaken The Game...");
-        m_AwakeGameButton.onClick.AddListener(() => { Debug.Log("Called The Game..."); });
-        m_AwakeGameButton.onClick.Invoke();
-    }
-
     internal void LowBalPopup()
     {
         OpenPopup(LBPopup_Object);
@@ -295,12 +267,6 @@ public class UIManager : MonoBehaviour
     {
         OpenPopup(ADPopup_Object);
     }
-
-    //private void Awake()
-    //{
-    //    if (Loading_Object) Loading_Object.SetActive(true);
-    //    StartCoroutine(LoadingRoutine());
-    //}
 
     internal void PopulateWin(int value, double amount)
     {

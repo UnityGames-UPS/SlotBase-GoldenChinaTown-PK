@@ -12,7 +12,6 @@ public class Stopper : MonoBehaviour
         if (!_controller.isCollision)
         {
             _controller.isCollision = true;
-            Debug.Log("collision done");
             _controller.StopWheel();
         }
     }
@@ -22,7 +21,6 @@ public class Stopper : MonoBehaviour
         if (!_controller.isCollision)
         {
             _controller.isCollision = true;
-            Debug.Log("collision done");
             _controller.StopWheel();
         }
     }
@@ -32,7 +30,6 @@ public class Stopper : MonoBehaviour
         if (!_controller.isCollision)
         {
             _controller.isCollision = true;
-            Debug.Log("collision done");
             _controller.StopWheel();
         }
     }
