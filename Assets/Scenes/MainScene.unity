@@ -4854,7 +4854,7 @@ MonoBehaviour:
   isResultdone: 0
   _jsManager: {fileID: 500036493}
   JSManager: {fileID: 1328365741}
-  testToken: 4615d88379fd4f90adee7faee68e61d7
+  testToken: a2c56d87fcf9477b8607cef33c791fdf
 --- !u!114 &500036493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26323,9 +26323,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4b949b985727243b4815427f1ed92e17, type: 3}
   - {fileID: 8300000, guid: 7f60fa6d7ba864b96b9b459c1816160c, type: 3}
   Bonusclips:
-  - {fileID: 8300000, guid: cd4727b4a54c54682bd1c010320b41ef, type: 3}
-  - {fileID: 8300000, guid: 692fef4dceb8b410bbe30f4b667345dc, type: 3}
-  - {fileID: 8300000, guid: ae93c0ef3f2bf4c68842cb59ea88314d, type: 3}
+  - {fileID: 8300000, guid: 5dc579c79854c45b0a4d2e280a2f32cb, type: 3}
+  - {fileID: 8300000, guid: 5e294a0235329469fb2d956b894ec74b, type: 3}
+  - {fileID: 8300000, guid: 06a66bdb647f34f5c9681e1ff5636e7e, type: 3}
   bg_audioBonus: {fileID: 8236105938349429121}
   audioPlayer_Bonus: {fileID: 3427039429705164440}
 --- !u!224 &2118440962465777265
