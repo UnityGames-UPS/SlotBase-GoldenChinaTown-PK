@@ -29,7 +29,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField]
   internal JSHandler _jsManager;
 
-  protected string TestSocketURI = "http://localhost:5000/";
+  protected string TestSocketURI = "https://mx2md3l5-5000.inc1.devtunnels.ms/";
   //protected string TestSocketURI = "https://game-crm-rtp-backend.onrender.com/";
   protected string SocketURI = null;
   //protected string SocketURI = "https://916smq0d-5000.inc1.devtunnels.ms/";
@@ -212,7 +212,7 @@ public class SocketIOManager : MonoBehaviour
     gameSocket.On<string>(SocketIOEventTypes.Disconnect, OnDisconnected);
     gameSocket.On<string>(SocketIOEventTypes.Error, OnError);
     gameSocket.On<string>("game:init", OnListenEvent);
-    gameSocket.On<string>("spin:result", OnResult);
+    gameSocket.On<string>("result", OnResult);
     gameSocket.On<bool>("socketState", OnSocketState);
     gameSocket.On<string>("internalError", OnSocketError);
     gameSocket.On<string>("alert", OnSocketAlert);
@@ -410,27 +410,28 @@ public class SocketIOManager : MonoBehaviour
 #endif
   }
 
-  internal void AccumulateResult(double currBet)
-  {
-    isResultdone = false;
-    MessageData message = new MessageData();
-    message.currentBet = slotManager.BetCounter;
-    // Serialize message data to JSON
+ internal void AccumulateResult(int currBet)
+    {
+        isResultdone = false;
+        MessageData message = new MessageData();
+    message.type = "SPIN";
+    Debug.Log($"current bet is " + currBet);
+    message.payload = new Data();
+    message.payload.betIndex = currBet;
     string json = JsonUtility.ToJson(message);
-    SendDataWithNamespace("spin:request", json);
-  }
-
-  private void SendDataWithNamespace(string namespaceName, double bet, string eventName)
+    SendDataWithNamespace("request", json);
+    }
+  private void SendDataWithNamespace(string namespaceName, double bet, string eventName , string json=null)
   {
     // Construct message data
 
-    MessageData message = new MessageData();
-    message.currentBet = bet;
+    // MessageData message = new MessageData();
+    // message.currentBet = bet;
 
-    // Serialize message data to JSON
-    string json = JsonUtility.ToJson(message);
-    Debug.Log(json);
-    // Send the message
+    // // Serialize message data to JSON
+    // string json = JsonUtility.ToJson(message);
+    // Debug.Log(json);
+    // // Send the message
     if (gameSocket != null && gameSocket.IsOpen)
     {
       gameSocket.Emit(eventName, json);
@@ -519,9 +520,21 @@ public class AuthData
 [Serializable]
 public class MessageData
 {
-  public double currentBet;
-}
+  // public int option;
+  // public List<int> index;
+  public string type;
+  public Data payload;
 
+}
+[Serializable]
+public class Data
+{
+  public int betIndex;
+//   public string Event;
+//   public List<int> index;
+//   public int option;
+
+}
 
 [Serializable]
 public class ExitData
