@@ -652,6 +652,7 @@ public class SlotBehaviour : MonoBehaviour
       yield break;
     }
     if (audioController) audioController.PlayWLAudio("spin");
+    if (TotalWin_text) TotalWin_text.text = "0.000";
     IsSpinning = true;
     CheckSpinAudio = true;
     ToggleButtonGrp(false);
@@ -911,7 +912,7 @@ public class SlotBehaviour : MonoBehaviour
 
   internal void CallCloseSocket()
   {
-    SocketManager.CloseSocket();
+    StartCoroutine(SocketManager.CloseSocket());
   }
 
   //bool once = false;
