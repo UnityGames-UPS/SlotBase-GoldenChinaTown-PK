@@ -137,6 +137,12 @@ public class SocketIOManager : MonoBehaviour
 
   }
 
+  void CloseGame()
+  {
+    Debug.Log("Unity: Closing Game");
+    StartCoroutine(CloseSocket());
+  }
+
   public void ExtractUrlAndToken(string fullUrl)
   {
     Uri uri = new Uri(fullUrl);
